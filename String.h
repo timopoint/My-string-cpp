@@ -21,6 +21,9 @@ namespace Mystd
 
 		unsigned int len(const char*) const;
 
+		void revers();
+		static void revers(String& str);
+
 		String(const char* str = "") :
 			strsize{ len(str) },
 			string{ new char[strsize] {(char)str} }
@@ -28,11 +31,14 @@ namespace Mystd
 			strcount++;
 		}
 
-		String(const String& str)
-		{ 
-			delete[] string;
-			string = new char[str.strsize];
-			
+		String(const String& str) {
+
+			strsize = str.strsize;
+			string = new char[strsize];
+			for (int i = 0; i < strsize; i++)
+			{
+				string[i] = str.string[i];
+			}   
 		}
 
 		String(String&& other) noexcept
@@ -62,6 +68,8 @@ namespace Mystd
 
 		String& operator+=(const String& str);
 		String& operator+=(const char* str);
+
+		String operator- () const;
 
 		String& operator*(const int);
 

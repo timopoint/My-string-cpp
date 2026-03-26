@@ -15,6 +15,28 @@ namespace Mystd
 		return ind;
 	}
 
+	void String::revers()
+	{
+		for (unsigned int i = 0; i < (strsize - 1)/2; i++)
+		{
+			char tmp;
+			tmp = string[i];
+			string[i] = string[strsize - i - 2];
+			string[strsize - i - 2] = tmp;
+		}
+	}
+
+	void String::revers(String& str)
+	{
+		for (unsigned int i = 0; i < (str.strsize - 1) / 2; i++)
+		{
+			char tmp;
+			tmp = str.string[i];
+			str.string[i] = str.string[str.strsize - i - 2];
+			str.string[str.strsize - i - 2] = tmp;
+		}
+	}
+
 	String& String::operator=(const char* str)
 	{
 		delete[] string;
@@ -100,6 +122,13 @@ namespace Mystd
 		*this = *this + str;
 		return *this;
 
+	}
+
+	String String::operator- () const
+	{
+		String newstr = *this;
+		newstr.revers();
+		return newstr;
 	}
 
 	String& String::operator*(const int amount)
