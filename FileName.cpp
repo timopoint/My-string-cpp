@@ -62,6 +62,8 @@ int main()
 	
 	str1.revers();
 	cout << str1 << std::endl;
-	cout << -str1;
+	cout << -str1 << std::endl;;
+	str1 = "const-";
+	cout << str1 * 7 << "end;" << std::endl;
 
 }

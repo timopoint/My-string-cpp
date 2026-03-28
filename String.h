@@ -71,7 +71,7 @@ namespace Mystd
 
 		String operator- () const;
 
-		String& operator*(const int);
+		String operator*(const int);
 
 		bool operator==(const String& str);
 		bool operator!=(const String& str);

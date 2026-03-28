@@ -131,7 +131,7 @@ namespace Mystd
 		return newstr;
 	}
 
-	String& String::operator*(const int amount)
+	String String::operator*(const int amount)
 	{
 		String newstr;
 		
@@ -141,15 +141,17 @@ namespace Mystd
 		}
 
 		delete[] newstr.string;
-		newstr.strsize = strsize * amount;
+		newstr.strsize = strsize * amount - amount + 1;
+		newstr.string = new char[newstr.strsize];
 
-		for (int i = 0; i < amount; i++)
+		for (unsigned int i = 0; i < amount; i++)
 		{
-			for (unsigned int j = strsize * i; j < strsize + strsize * i; i++)
+			for (unsigned int j = strsize * i; j < strsize + strsize * i - 1; j++)
 			{
-				newstr.string[j] = string[j - strsize * i];
+				newstr.string[j - i] = string[j - strsize * i ];
 			}
 		}
+		newstr.string[newstr.strsize - 1] = '\0';
 
 		return newstr;
 	}
