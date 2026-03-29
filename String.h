@@ -39,6 +39,7 @@ namespace Mystd
 			{
 				string[i] = str.string[i];
 			}   
+			strcount++;
 		}
 
 		String(String&& other) noexcept
@@ -56,7 +57,7 @@ namespace Mystd
 			strcount--;
 		}
 
-		int getCountStr() { return strcount; }
+		static int getCountStr() { return strcount; }
 
 		//String() : String("") {}
 
